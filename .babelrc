@@ -1,0 +1,10 @@
+{
+    "presets": [
+        ["es2015", "stage-3"]
+    ],
+    "plugins": [
+        "transform-runtime",
+        "transform-decorators-legacy",
+        "babel-plugin-transform-async-to-generator"
+    ]
+}
