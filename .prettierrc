@@ -7,9 +7,10 @@
     "trailingComma": "none",
     "overrides": [
         {
-            "files": "src/**/*.ts",
+            "files": "src/**/*.js",
             "options": {
-                "parser": "typescript"
+                "parser": "babel",
+                "singleQuote": false
             }
         },
         {

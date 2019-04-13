@@ -5,7 +5,7 @@
                 :value="code"
                 :options="cmOptions"
                 @ready="onCmReady"
-                @focus="onCmFocus"
+                @renderLine="cursorActivity"
                 @input="onCmCodeChange" />
   </section>
 
@@ -17,11 +17,15 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
 import 'codemirror/mode/javascript/javascript'
 
+import finder from '@medv/finder'
+import event from '../event'
+import codeGenerator from '../codeGenerator'
+
 export default {
     name: 'puppeteer-domkit-recorder',
     data() {
         return {
-            code: 'const a = 10',
+            code: '',
             cmOptions: {
                 tabSize: 4,
                 mode: 'text/javascript',
@@ -36,24 +40,17 @@ export default {
         }
     },
 
-    mounted() {},
+    mounted() {
+        console.log(this.codemirror.getCursor().line)
+        codeGenerator.bind(this.codemirror)
+        event.listenerElementEvent()
+    },
     computed: {
         codemirror() {
             return this.$refs.myCm.codemirror
         }
     },
-    methods: {
-        onCmReady(cm) {
-            console.log('the editor is readied!', cm)
-        },
-        onCmFocus(cm) {
-            console.log('the editor is focus!', cm)
-        },
-        onCmCodeChange(newCode) {
-            console.log('this is new code', newCode)
-            this.code = newCode
-        }
-    }
+    methods: {}
 }
 </script>
 
@@ -64,6 +61,8 @@ export default {
     height 100%
   .CodeMirror
     height 100%
+    line-height 1.2
+    font-size 12px
   .CodeMirror-scroll
     height 100%
     overflow-y hidden

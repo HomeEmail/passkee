@@ -2,7 +2,10 @@
 	"name": "admin-commons",
 	"scripts": {
 		"build": "node build/build.js",
-		"dev": "webpack-dev-server --inline --hot --config build/webpack-conf/dev.js"
+		"build-w": "webpack --config build/webpack-conf/build.js -w",
+		"dev": "webpack-dev-server --inline --hot --config build/webpack-conf/dev.js",
+		"test": "mocha test/index.js --recursive --full-trace --timeout 10000",
+		"test-dev": "mocha test/index.js --recursive --inspect --full-trace --bail --debug --async-only --timeout 10000"
 	},
 	"devDependencies": {
 		"autoprefixer": "^6.7.2",
@@ -46,9 +49,13 @@
 		"yargs": "^11.0.0"
 	},
 	"dependencies": {
+		"@medv/finder": "^1.1.1",
 		"codemirror": "^5.45.0",
 		"element-ui": "^2.7.2",
 		"flex.css": "^1.1.7",
+		"mocha": "^6.1.3",
+		"puppeteer": "^1.14.0",
+		"puppeteer-domkit": "^1.1.18",
 		"vue": "^2.5.15",
 		"vue-codemirror": "^4.0.6"
 	}

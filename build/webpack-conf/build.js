@@ -20,7 +20,7 @@ module.exports = () => {
 		output: {
 			path: path.join(__dirname, '../../browser'),
 			publicPath: '',
-			filename: `GUI.js`,
+			filename: `pdr-gui.js`,
 			library: 'puppeteer-domkit-recorder',
 			libraryTarget: 'umd',
 			umdNamedDefine: true

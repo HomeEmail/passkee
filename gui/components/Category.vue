@@ -103,7 +103,7 @@ export default {
 
 <style lang="stylus">
 .pdr-category
-  width 25%
+  width 20% !important
   height 100%
   .el-input__inner
     border-radius 0
@@ -113,6 +113,8 @@ export default {
   .el-tree
     background-color transparent
     color #eee
+    .el-tree-node__label
+      font-size 12px
     .el-tree-node
       &.is-current
         &>.el-tree-node__content
