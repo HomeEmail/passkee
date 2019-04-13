@@ -1,5 +1,11 @@
 import Vue from 'vue';
 import Recorder from './Recorder.vue';
+import VueCodemirror from 'vue-codemirror';
+import 'element-ui/lib/theme-chalk/index.css';
+import UI from 'element-ui';
+import 'flex.css';
+Vue.use(VueCodemirror);
+Vue.use(UI);
 const RecorderComponent = Vue.extend(Recorder);
 const instance = new RecorderComponent({});
 instance.vm = instance.$mount();
