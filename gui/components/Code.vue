@@ -3,10 +3,7 @@
   <section class="pdr-code">
     <codemirror ref="myCm"
                 :value="code"
-                :options="cmOptions"
-                @ready="onCmReady"
-                @renderLine="cursorActivity"
-                @input="onCmCodeChange" />
+                :options="cmOptions" />
   </section>
 
 </template>

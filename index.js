@@ -3,6 +3,7 @@ const path = require('path');
 const puppeteer = require('puppeteer');
 const $ = require('puppeteer-domkit');
 const commands = require('./lib/commands');
+const utils = require('./lib/utils');
 module.exports = async () => {
 	let browser = await puppeteer.launch({
 		headless: false,
@@ -13,7 +14,12 @@ module.exports = async () => {
 
 	await $.setBrowser(browser);
 
+	console.log($.__for_recorder__);
+
 	page.on('load', (response) => {
+		page.evaluate((allCommands) => {
+			window.ALL_COMMANDS = allCommands;
+		}, $.__for_recorder__);
 		page.addScriptTag({
 			path: path.join(__dirname, './browser/pdr-gui.js')
 		});
@@ -32,4 +38,5 @@ module.exports = async () => {
 	});
 	page.goto('https://www.youku.com/');
 };
+
 module.exports.default = module.exports;
