@@ -11,7 +11,7 @@
                    round>{{item}}</el-button>
       </li>
     </ul>
-    <div class="dom-func">
+    <div class="dom-func line">
       <el-button-group>
         <el-button size="mini"
                    v-for="(item, i) in ['waitFor', 'expect', 'get']"
@@ -27,6 +27,15 @@
         <el-button size="mini"
                    @dblclick="clck({type: 'dom', mode: domMode, func: item})"
                    @click="clck({type: 'dom', mode: domMode, func: item})"
+                   round>{{item}}</el-button>
+      </li>
+    </ul>
+
+    <ul class=" line">
+      <li v-for="(item, i) in ['response', 'request', 'waitFor']"
+          :key="i">
+        <el-button size="mini"
+                   @click="toInsertLine({type: 'page', func: item})"
                    round>{{item}}</el-button>
       </li>
     </ul>
@@ -88,6 +97,7 @@ export default {
                 this.toChangeLine.apply(this, args)
             }, 200)
         },
+
         toChangeLine(opts) {
             codeGenerator.changeFocusedLine(opts)
         },
@@ -105,15 +115,16 @@ export default {
   overflow auto
   background-color rgba(0, 0, 0, 0.5)
   .dom-func
-    border-top 1px solid rgba(255, 255, 255, 0.3)
     padding-bottom 0
   ul, .dom-func
     padding 5px
     margin 0
     li
       display inline-block
-      padding 1px
+      padding 5px
       margin 0
     button
-      padding 3px 6px !important
+      padding 4px 10px !important
+  .line
+    border-top 1px solid rgba(255, 255, 255, 0.3)
 </style>

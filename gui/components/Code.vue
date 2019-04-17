@@ -56,7 +56,7 @@ export default {
     height 100%
   .CodeMirror
     height 100%
-    line-height 1.2
+    line-height 1.5
     font-size 12px
   .CodeMirror-scroll
     height 100%
