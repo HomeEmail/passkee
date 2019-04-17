@@ -20,21 +20,23 @@ export default {
             filterText: '',
             data: [
                 {
-                    label: '一级 1',
+                    label: '消息中心',
                     children: [
                         {
-                            label:
-                                '二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1二级 1-1',
+                            label: '广告',
                             children: [
                                 {
-                                    label: '三级 1-1-1'
+                                    label: '有广告数据，显示广告'
+                                },
+                                {
+                                    label: '没有广告数据，不显示广告'
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    label: '一级 2',
+                    label: '投稿',
                     children: [
                         {
                             label: '二级 2-1',
@@ -55,7 +57,7 @@ export default {
                     ]
                 },
                 {
-                    label: '一级 3',
+                    label: '我的方案',
                     children: [
                         {
                             label: '二级 3-1',
