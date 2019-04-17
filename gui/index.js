@@ -1,21 +1,25 @@
-import Vue from 'vue';
-import Recorder from './Recorder.vue';
-import VueCodemirror from 'vue-codemirror';
-import 'element-ui/lib/theme-chalk/index.css';
-import UI from 'element-ui';
-import 'puppeteer-domkit/browser/$Z';
-import 'flex.css';
+import Vue from 'vue'
+import Recorder from './Recorder.vue'
+import VueCodemirror from 'vue-codemirror'
+import 'element-ui/lib/theme-chalk/index.css'
+import UI from 'element-ui'
+import 'puppeteer-domkit/browser/$Z'
+import 'flex.css'
 
-Vue.use(VueCodemirror);
-Vue.use(UI);
-const RecorderComponent = Vue.extend(Recorder);
-const instance = new RecorderComponent({});
-instance.vm = instance.$mount();
-document.body.appendChild(instance.$el);
+Vue.use(VueCodemirror)
+Vue.use(UI)
+const RecorderComponent = Vue.extend(Recorder)
+const instance = new RecorderComponent({})
+instance.vm = instance.$mount()
+document.body.appendChild(instance.$el)
 setInterval(() => {
-	console.log(`[pdr-command]resize=${window.outerWidth},${window.outerHeight - 140}`);
-}, 1000);
-console.log(`[pdr-command]resize=${window.outerWidth},${window.outerHeight - 140}`);
+    console.log(
+        `[pdr-command]resize=${window.outerWidth},${window.outerHeight - 140}`
+    )
+}, 1000)
+console.log(
+    `[pdr-command]resize=${window.outerWidth},${window.outerHeight - 140}`
+)
 $Z('body').append(`
 <div id="app"><div class="view-main"><section class="el-container"><div data-v-0788800a="" class="view-aside"><ul data-v-0788800a="" role="menubar" class="el-menu-vertical el-menu--collapse el-menu" style=""><!----><div data-v-0788800a="" class="logo_icon"><i data-v-0788800a="" class="iconfont icon-menu_logo_mini"></i></div><li data-v-0788800a="" role="menuitem" aria-haspopup="true" class="el-submenu is-active"><div class="el-submenu__title" style="padding-left: 20px;"><i data-v-0788800a="" class="icon_style iconfont icon-Menu_hot1" style="color: rgb(157, 160, 173);"></i><span data-v-0788800a="" slot="title">方案管理</span><i class="el-submenu__icon-arrow el-icon-arrow-right"></i></div><div class="el-menu--vertical" style="display: none;"><ul role="menu" class="el-menu el-menu--popup el-menu--popup-right-start"><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item is-active" style="padding-left: 20px;">我的方案</li><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">我的投稿</li></ul></div></li><!----><li data-v-0788800a="" role="menuitem" aria-haspopup="true" class="el-submenu"><div class="el-submenu__title" style="padding-left: 20px;"><i data-v-0788800a="" class="icon_style iconfont icon-Menu_wares1" style="color: rgb(157, 160, 173);"></i><span data-v-0788800a="" slot="title">素材商品管理</span><i class="el-submenu__icon-arrow el-icon-arrow-right"></i></div><div class="el-menu--vertical" style="display: none;"><ul role="menu" class="el-menu el-menu--popup el-menu--popup-right-start"><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">企业商品</li><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">企业素材</li><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">公开记录</li></ul></div></li><!----><!----><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;"><div class="el-tooltip" aria-describedby="el-tooltip-845" tabindex="0" style="position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; display: inline-block; box-sizing: border-box; padding: 0px 20px;"><i data-v-0788800a="" class="icon_style iconfont icon-menu_brand"></i></div></li><!----><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;"><div class="el-tooltip" aria-describedby="el-tooltip-7098" tabindex="0" style="position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; display: inline-block; box-sizing: border-box; padding: 0px 20px;"><i data-v-0788800a="" class="icon_style icon iconfont icon-Menu_account"></i></div></li><li data-v-0788800a="" role="menuitem" aria-haspopup="true" class="el-submenu"><div class="el-submenu__title" style="padding-left: 20px;"><i data-v-0788800a="" class="icon_style iconfont icon-tool" style="color: rgb(157, 160, 173);"></i><span data-v-0788800a="" slot="title">设置管理</span><i class="el-submenu__icon-arrow el-icon-arrow-right"></i></div><div class="el-menu--vertical" style="display: none;"><ul role="menu" class="el-menu el-menu--popup el-menu--popup-right-start"><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;">全景图设置</li></ul></div></li><!----><li data-v-0788800a="" role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px; display: none;"></li></ul><!----></div><section class="el-container is-vertical"><header class="el-header" style="height: 50px;"><div data-v-60bec814="" class="view-header"><div data-v-60bec814="" class="logo-box"><!----><i data-v-60bec814="" title="展开菜单" class="iconfont icon-menu_bar_unfold"></i></div><div data-v-60bec814="" class="login-box"><div data-v-60bec814="" class="help"><!----><span data-v-60bec814="" class="customer"><i data-v-60bec814="" class="iconfont icon-service1"></i> 联系客服
       </span><!----><span data-v-60bec814="" class="teach"><i data-v-60bec814="" class="iconfont icon-notify"></i> 消息中心
@@ -300,4 +304,4 @@ $Z('body').append(`
       </li><!----></span></ul></div><button data-v-a002cbee="" type="button" class="el-button button time left mrl10 recommend-btn el-button--primary el-button--mini"><!----><!----><span><!----><!---->
           去投稿
         </span></button><!----><!----></div></div><!----></div></div></div></div><!----></div><div data-v-7219e4ff="" data-v-21de81e6="" class="el-row" style="padding: 10px 0px; background: rgb(255, 255, 255); position: absolute; left: 0px; bottom: 0px; right: 0px;"><div data-v-7219e4ff="" class="el-col el-col-24"><div data-v-7219e4ff="" class="el-pagination is-background" style="padding: 0px 25px;"><div class="el-pagination__rightwrapper"><button type="button" disabled="disabled" class="btn-prev"><i class="el-icon el-icon-arrow-left"></i></button><ul class="el-pager"><li class="number active">1</li><!----><li class="number">2</li><li class="number">3</li><li class="number">4</li><li class="number">5</li><li class="number">6</li><li class="el-icon more btn-quicknext el-icon-more"></li><li class="number">174</li></ul><button type="button" class="btn-next"><i class="el-icon el-icon-arrow-right"></i></button><span class="el-pagination__jump">前往<div class="el-input el-pagination__editor is-in-pagination"><!----><input type="number" autocomplete="off" min="1" max="174" class="el-input__inner"><!----><!----><!----></div>页</span></div><span class="el-pagination__total">共 2606 条</span><span class="el-pagination__sizes"><div class="el-select el-select--mini"><!----><div class="el-input el-input--mini el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----></span><!----></span><!----></div><div class="el-select-dropdown el-popper" style="display: none; min-width: 110px;"><div class="el-scrollbar" style=""><div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -6px; margin-right: -6px;"><ul class="el-scrollbar__view el-select-dropdown__list"><!----><li class="el-select-dropdown__item selected"><span>15条/页</span></li><li class="el-select-dropdown__item"><span>30条/页</span></li><li class="el-select-dropdown__item"><span>45条/页</span></li></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div></div></div><!----></div></div></span></div></div></div><!----><!----><!----><!----></div></div></main></section></section></div><!----></div>
-`);
+`)

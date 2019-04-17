@@ -15,8 +15,7 @@ import 'codemirror/theme/monokai.css'
 import 'codemirror/mode/javascript/javascript'
 
 import finder from '@medv/finder'
-import event from '../event'
-import codeGenerator from '../codeGenerator'
+import codeGenerator from '../../lib/codeGenerator'
 
 export default {
     name: 'puppeteer-domkit-recorder',
@@ -40,7 +39,6 @@ export default {
     mounted() {
         console.log(this.codemirror.getCursor().line)
         codeGenerator.bind(this.codemirror)
-        event.listenerElementEvent()
     },
     computed: {
         codemirror() {

@@ -6,7 +6,8 @@
       <li v-for="(item, i) in ['click', 'input', 'focus', 'blur','hover', 'mouseenter', 'mouseleave']"
           :key="i">
         <el-button size="mini"
-                   @click="handleChangeLine(item)"
+                   @dblclick="clck({type: 'trigger', event: item})"
+                   @click="clck({type: 'trigger', event: item})"
                    round>{{item}}</el-button>
       </li>
     </ul>
@@ -15,25 +16,29 @@
         <el-button size="mini"
                    v-for="(item, i) in ['waitFor', 'expect', 'get']"
                    :key="i"
-                   @click="active2 = item"
-                   :type=" item === active2 ? 'warning' : 'info'"
+                   @click="domMode = item"
+                   :type=" item === domMode ? 'warning' : 'info'"
                    round>{{item}}</el-button>
       </el-button-group>
     </div>
     <ul>
-      <li v-for="(item, i) in func[active2]"
+      <li v-for="(item, i) in func[domMode]"
           :key="i">
         <el-button size="mini"
+                   @dblclick="clck({type: 'dom', mode: domMode, func: item})"
+                   @click="clck({type: 'dom', mode: domMode, func: item})"
                    round>{{item}}</el-button>
       </li>
     </ul>
-
   </section>
-
 </template>
 
 <script>
-import codeGenerator from '../codeGenerator'
+import codeGenerator from '../../lib/codeGenerator'
+
+let dbclickTimer = 0
+let clickTimo = 0
+
 export default {
     data() {
         const oneParam = [
@@ -53,7 +58,7 @@ export default {
 
         return {
             active: 'trigger',
-            active2: 'waitFor',
+            domMode: 'waitFor',
             actions: ['trigger', 'waitFor', 'expect'],
             func: {
                 get: [...oneParam, ...twoParams],
@@ -66,8 +71,28 @@ export default {
     mounted() {},
 
     methods: {
-        handleChangeLine(item) {
-            codeGenerator.changeLine(item)
+        clck() {
+            // 支持模拟双击事件
+            const args = arguments
+            if (dbclickTimer && Date.now() - dbclickTimer < 300) {
+                clearTimeout(clickTimo)
+                this.toInsertLine.apply(this, args)
+                dbclickTimer = 0
+                clickTimo = 0
+                return
+            }
+            dbclickTimer = Date.now()
+            clickTimo = setTimeout(() => {
+                dbclickTimer = 0
+                clickTimo = 0
+                this.toChangeLine.apply(this, args)
+            }, 200)
+        },
+        toChangeLine(opts) {
+            codeGenerator.changeFocusedLine(opts)
+        },
+        toInsertLine(opts) {
+            codeGenerator.insertLine(opts)
         }
     }
 }
@@ -78,6 +103,7 @@ export default {
   width 25% !important
   height 100%
   overflow auto
+  background-color rgba(0, 0, 0, 0.5)
   .dom-func
     border-top 1px solid rgba(255, 255, 255, 0.3)
     padding-bottom 0

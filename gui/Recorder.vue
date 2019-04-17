@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import listenDocumentEvent from './listenDocumentEvent'
 import PdrCategory from './components/Category.vue'
 import PdrCode from './components/Code.vue'
 import PdrHelper from './components/Helper.vue'
@@ -22,7 +23,9 @@ export default {
         }
     },
     watch: {},
-    mounted() {}
+    mounted() {
+        listenDocumentEvent.on()
+    }
 }
 </script>
 
