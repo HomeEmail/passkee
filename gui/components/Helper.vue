@@ -16,8 +16,8 @@
         <el-button size="mini"
                    v-for="(item, i) in ['waitFor', 'expect', 'get']"
                    :key="i"
-                   @click="domMode = item"
-                   :type=" item === domMode ? 'warning' : 'info'"
+                   @click="domModeChange(item)"
+                   :type="item === domMode ? 'warning' : 'info'"
                    round>{{item}}</el-button>
       </el-button-group>
     </div>
@@ -96,6 +96,15 @@ export default {
                 clickTimo = 0
                 this.toChangeLine.apply(this, args)
             }, 200)
+        },
+
+        domModeChange(mode) {
+            this.domMode = mode
+
+            codeGenerator.changeFocusedLine({
+                type: 'dom',
+                mode: mode
+            })
         },
 
         toChangeLine(opts) {
