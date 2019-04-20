@@ -31,7 +31,6 @@ module.exports = async () => {
             const text = x.toString().replace(/JSHandle\:/g, '')
             if (text.indexOf('[pdr-command]') === 0) {
                 const cmd = text.replace(/\[pdr\-command\]/, '').split('=')
-                console.log(` ${cmd} `.yellow)
                 commands[cmd[0]] && commands[cmd[0]](decodeURIComponent(cmd[1]))
             }
         }

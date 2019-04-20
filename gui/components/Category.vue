@@ -4,80 +4,25 @@
               size="small"
               v-model="filterText">
     </el-input>
-    <el-tree ref="tree"
-             :data="data"
-             :highlight-current="true"
-             :props="defaultProps"
-             :filter-node-method="filterNode"
-             @node-click="handleNodeClick"></el-tree>
+    <div class="tree-wrapper">
+      <el-tree ref="tree"
+               :data="data"
+               :highlight-current="true"
+               :props="defaultProps"
+               :filter-node-method="filterNode"
+               @current-change="handleNodeClick"></el-tree>
+    </div>
   </section>
 </template>
 
 <script>
+import codeGenerator from '../../lib/codeGenerator'
+
 export default {
     data() {
         return {
             filterText: '',
-            data: [
-                {
-                    label: '消息中心',
-                    children: [
-                        {
-                            label: '广告',
-                            children: [
-                                {
-                                    label: '有广告数据，显示广告'
-                                },
-                                {
-                                    label: '没有广告数据，不显示广告'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    label: '投稿',
-                    children: [
-                        {
-                            label: '二级 2-1',
-                            children: [
-                                {
-                                    label: '三级 2-1-1'
-                                }
-                            ]
-                        },
-                        {
-                            label: '二级 2-2',
-                            children: [
-                                {
-                                    label: '三级 2-2-1'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    label: '我的方案',
-                    children: [
-                        {
-                            label: '二级 3-1',
-                            children: [
-                                {
-                                    label: '三级 3-1-1'
-                                }
-                            ]
-                        },
-                        {
-                            label: '二级 3-2',
-                            children: [
-                                {
-                                    label: '三级 3-2-1'
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ],
+            data: [],
             defaultProps: {
                 children: 'children',
                 label: 'label'
@@ -97,7 +42,10 @@ export default {
             return data.label.indexOf(value) !== -1
         },
         handleNodeClick(data) {
-            console.log(data)
+            if (data.code) {
+                codeGenerator.setCode(data.code)
+                codeGenerator.syncMirror()
+            }
         }
     }
 }
@@ -107,6 +55,11 @@ export default {
 .pdr-category
   width 20% !important
   height 100%
+  background-color rgba(0, 0, 0, 0.8)
+  overflow hidden
+  .tree-wrapper
+    height calc(100% - 30px)
+    overflow-y auto
   .el-input__inner
     border-radius 0
     background-color rgba(255, 255, 255, 0.1)
@@ -118,9 +71,11 @@ export default {
     .el-tree-node__label
       font-size 12px
     .el-tree-node
-      &.is-current
+      &.is-current, &.is-focusable.is-current
         &>.el-tree-node__content
-          background-color rgba(255, 255, 255, 0.3)
-    .el-tree-node__content:hover
-      background-color rgba(255, 255, 255, 0.1)
+          background-color rgba(255, 255, 255, 0.3) !important
+    .el-tree-node__content
+      background-color rgba(255, 255, 255, 0) !important
+      &:hover, &:focus
+        background-color rgba(255, 255, 255, 0.1) !important
 </style>

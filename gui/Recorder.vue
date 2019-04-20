@@ -3,9 +3,9 @@
            class="puppeteer-domkit-recorder"
            :style="{height: height + 'px'}"
            flex="box:justify">
-    <PdrCategory></PdrCategory>
-    <PdrCode></PdrCode>
-    <PdrHelper></PdrHelper>
+    <PdrCategory ref='category'></PdrCategory>
+    <PdrCode ref='code'></PdrCode>
+    <PdrHelper ref='helper'></PdrHelper>
   </section>
 </template>
 
@@ -23,8 +23,23 @@ export default {
         }
     },
     watch: {},
+    created() {},
+    beforeMount() {
+        console.log(`[pdr-command]ready=1`)
+    },
     mounted() {
         listenDocumentEvent.on()
+    },
+    computed: {
+        category() {
+            return this.$refs.category
+        },
+        code() {
+            return this.$refs.code
+        },
+        helper() {
+            return this.$refs.helper
+        }
     }
 }
 </script>

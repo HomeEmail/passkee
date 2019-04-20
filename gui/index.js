@@ -12,11 +12,10 @@ const RecorderComponent = Vue.extend(Recorder)
 const instance = new RecorderComponent({})
 instance.vm = instance.$mount()
 document.body.appendChild(instance.$el)
-setInterval(() => {
-    console.log(
-        `[pdr-command]resize=${window.outerWidth},${window.outerHeight - 140}`
-    )
-}, 1000)
+
+console.log(instance)
+window.PDRGUI = instance
+
 console.log(
     `[pdr-command]resize=${window.outerWidth},${window.outerHeight - 140}`
 )
