@@ -4788,7 +4788,7 @@ puppeteer-domkit@^1.1.20, puppeteer-domkit@^1.1.27:
 
 puppeteer@^1.14.0:
   version "1.14.0"
-  resolved "http://registry.npm.taobao.org/puppeteer/download/puppeteer-1.14.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fpuppeteer%2Fdownload%2Fpuppeteer-1.14.0.tgz#828c1926b307200d5fc8289b99df4e13e962d339"
+  resolved "http://registry.npm.taobao.org/puppeteer/download/puppeteer-1.14.0.tgz#828c1926b307200d5fc8289b99df4e13e962d339"
   dependencies:
     debug "^4.1.0"
     extract-zip "^1.6.6"

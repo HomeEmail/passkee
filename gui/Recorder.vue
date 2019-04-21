@@ -19,7 +19,7 @@ export default {
     components: { PdrCategory, PdrCode, PdrHelper },
     data() {
         return {
-            height: 200
+            height: 300
         }
     },
     watch: {},

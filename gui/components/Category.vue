@@ -1,6 +1,6 @@
 <template>
   <section class="pdr-category">
-    <el-input placeholder="输入关键字进行过滤"
+    <el-input placeholder="filter"
               size="small"
               v-model="filterText">
     </el-input>
@@ -65,6 +65,10 @@ export default {
     background-color rgba(255, 255, 255, 0.1)
     border none
     color #ccc
+    height 24px
+    line-height 24px
+    font-size 13px
+    padding-left 10px
   .el-tree
     background-color transparent
     color #eee

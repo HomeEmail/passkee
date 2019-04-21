@@ -1,44 +1,55 @@
 <template>
 
   <section class="pdr-helper">
+    <header flex>
+      <ul flex
+          class="left">
+        <li :class="[active === 'domkit' ? 'active' : '']"
+            @click="active = 'domkit'">DomKit</li>
+        <li :class="[active === 'network' ? 'active' : '']"
+            @click="active = 'network'">Network</li>
+      </ul>
+      <ul class="right"></ul>
+    </header>
+    <section v-if="active === 'domkit'">
+      <ul>
+        <li v-for="(item, i) in ['click', 'input', 'focus', 'blur','hover', 'mouseenter', 'mouseleave']"
+            :key="i">
+          <el-button size="mini"
+                     @dblclick="clck({type: 'trigger', event: item})"
+                     @click="clck({type: 'trigger', event: item})"
+                     round>{{item}}</el-button>
+        </li>
+      </ul>
+      <div class="dom-func line">
+        <el-button-group>
+          <el-button size="mini"
+                     v-for="(item, i) in ['waitFor', 'expect', 'get']"
+                     :key="i"
+                     @click="domModeChange(item)"
+                     :type="item === domMode ? 'warning' : 'info'"
+                     round>{{item}}</el-button>
+        </el-button-group>
+      </div>
+      <ul>
+        <li v-for="(item, i) in func[domMode]"
+            :key="i">
+          <el-button size="mini"
+                     @dblclick="clck({type: 'dom', mode: domMode, func: item})"
+                     @click="clck({type: 'dom', mode: domMode, func: item})"
+                     round>{{item}}</el-button>
+        </li>
+      </ul>
 
-    <ul>
-      <li v-for="(item, i) in ['click', 'input', 'focus', 'blur','hover', 'mouseenter', 'mouseleave']"
-          :key="i">
-        <el-button size="mini"
-                   @dblclick="clck({type: 'trigger', event: item})"
-                   @click="clck({type: 'trigger', event: item})"
-                   round>{{item}}</el-button>
-      </li>
-    </ul>
-    <div class="dom-func line">
-      <el-button-group>
-        <el-button size="mini"
-                   v-for="(item, i) in ['waitFor', 'expect', 'get']"
-                   :key="i"
-                   @click="domModeChange(item)"
-                   :type="item === domMode ? 'warning' : 'info'"
-                   round>{{item}}</el-button>
-      </el-button-group>
-    </div>
-    <ul>
-      <li v-for="(item, i) in func[domMode]"
-          :key="i">
-        <el-button size="mini"
-                   @dblclick="clck({type: 'dom', mode: domMode, func: item})"
-                   @click="clck({type: 'dom', mode: domMode, func: item})"
-                   round>{{item}}</el-button>
-      </li>
-    </ul>
-
-    <ul class=" line">
-      <li v-for="(item, i) in ['response', 'request', 'waitFor']"
-          :key="i">
-        <el-button size="mini"
-                   @click="toInsertLine({type: 'page', func: item})"
-                   round>{{item}}</el-button>
-      </li>
-    </ul>
+      <ul class=" line">
+        <li v-for="(item, i) in ['response', 'request', 'waitFor']"
+            :key="i">
+          <el-button size="mini"
+                     @click="toInsertLine({type: 'page', func: item})"
+                     round>{{item}}</el-button>
+        </li>
+      </ul>
+    </section>
   </section>
 </template>
 
@@ -66,7 +77,7 @@ export default {
         const twoParams = ['css', 'attr', 'prop', 'data', 'is', 'hasClass']
 
         return {
-            active: 'trigger',
+            active: 'domkit',
             domMode: 'waitFor',
             actions: ['trigger', 'waitFor', 'expect'],
             func: {
@@ -123,9 +134,33 @@ export default {
   height 100%
   overflow auto
   background-color rgba(0, 0, 0, 0.5)
+  header
+    background-color #666
+    height 24px
+    &>ul
+      li
+        height 24px
+        line-height 24px
+        color #fff
+        font-size 12px
+        padding 0 10px
+        background-color rgba(255, 255, 255, 0.2)
+        cursor pointer
+        &.active
+          background-color rgba(0, 0, 0, 0.3)
+          &:hover
+            background-color rgba(0, 0, 0, 0.3)
+        &:hover
+          background-color rgba(0, 0, 0, 0.1)
+    &>ul.left
+      li
+        border-right 1px solid #666
+    &>ul.right
+      li
+        border-left 1px solid #666
   .dom-func
     padding-bottom 0
-  ul, .dom-func
+  &>section>ul, .dom-func
     padding 5px
     margin 0
     li
