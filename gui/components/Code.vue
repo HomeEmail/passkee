@@ -86,7 +86,7 @@ export default {
     height 100%
     line-height 1.5
     font-size 12px
-    padding 20px 0
+    padding 10px 0
   .CodeMirror-scroll
     height 100%
     overflow-y hidden
