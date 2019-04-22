@@ -13,15 +13,19 @@
 ```json
 // the case id generated automaticlly would be append to the case
 {
-    "msg-center": {
-        "ad": {
-            "cases": [
-                "广告位 有数据:S2DS1", // id生成，唯一，无序，无规律，避免手动更改
-                "广告位 没数据:HDSSK"
-            ]
-        }
-    }
+    "name": "msg-center",
+    "folders":[{
+        "name": "sub-folder",
+        "files": ["ad.js"]
+    }],
 }
+
+[
+    "广告"/*CASE:0*/, 
+    "有数据"/*CASE:1*/, 
+    "就是觉得",
+]
+
 ```
 
 ```javascript
