@@ -3,15 +3,18 @@ import list from './list'
 import searchfilter from './search-filter'
 
 export default () => {
-    /*[BEFORE*/
+    /*BEFORE*/
     before(async () => {
         /*CODE*/
     })
-    /*[AFTER*/
+    /*/*/
+
+    /*AFTER*/
     after(async () => {
         /*CODE*/
     })
-    /*]*/
+    /*/*/
+
     describe('list', list)
     describe('list item', listitem)
     describe('search filter', searchfilter)

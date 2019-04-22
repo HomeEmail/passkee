@@ -1,23 +1,31 @@
 export default () => {
-    /*[BEFORE*/
+    /*BEFORE*/
     before(async () => {
         /*CODE*/
     })
-    /*[AFTER*/
+    /*/*/
+
+    /*AFTER*/
     after(async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+
+    /*CASE*/
     it('翻页', async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+
+    /*CASE*/
     it('没有数据，相应显示', async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+
+    /*CASE*/
     it('跳转详情页', async () => {
         /*CODE*/
     })
-    /*]*/
+    /*/*/
 }

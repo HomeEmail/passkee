@@ -1,19 +1,25 @@
 export default () => {
-    /*[BEFORE*/
+    /*BEFORE*/
     before(async () => {
         /*CODE*/
     })
-    /*[AFTER*/
+    /*/*/
+
+    /*AFTER*/
     after(async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+
+    /*CASE*/
     it('输入方案名称模糊搜索', async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+
+    /*CASE*/
     it('设置过滤条件', async () => {
         /*CODE*/
     })
-    /*]*/
+    /*/*/
 }

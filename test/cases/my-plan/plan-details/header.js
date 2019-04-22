@@ -1,19 +1,25 @@
 export default () => {
-    /*[BEFORE*/
+    /*BEFORE*/
     before(async () => {
         /*CODE*/
     })
-    /*[AFTER*/
+    /*/*/
+
+    /*AFTER*/
     after(async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+
+    /*CASE*/
     it('下载cad', async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+
+    /*CASE*/
     it('渲染效果图跳转', async () => {
         /*CODE*/
     })
-    /*]*/
+    /*/*/
 }

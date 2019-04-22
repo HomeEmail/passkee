@@ -1,19 +1,22 @@
 export default () => {
-    /*[BEFORE*/
+    /*BEFORE*/
     before(async () => {
         /*CODE*/
     })
-    /*[AFTER*/
+    /*/*/
+    /*AFTER*/
     after(async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+    /*CASE*/
     it('打开全屋漫游', async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+    /*CASE*/
     it('全屋漫游列表', async () => {
         /*CODE*/
     })
-    /*]*/
+    /*/*/
 }

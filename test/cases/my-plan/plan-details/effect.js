@@ -1,19 +1,22 @@
 export default () => {
-    /*[BEFORE*/
+    /*BEFORE*/
     before(async () => {
         /*CODE*/
     })
-    /*[AFTER*/
+    /*/*/
+    /*AFTER*/
     after(async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+    /*CASE*/
     it('效果图列表', async () => {
         /*CODE*/
     })
-    /*[CASE*/
+    /*/*/
+    /*CASE*/
     it('效果图过滤', async () => {
         /*CODE*/
     })
-    /*]*/
+    /*/*/
 }

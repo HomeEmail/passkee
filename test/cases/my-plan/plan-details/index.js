@@ -3,15 +3,16 @@ import effect from './effect'
 import header from './header'
 
 export default () => {
-    /*[BEFORE*/
+    /*BEFORE*/
     before(async () => {
         /*CODE*/
     })
-    /*[AFTER*/
+    /*/*/
+    /*AFTER*/
     after(async () => {
         /*CODE*/
     })
-    /*]*/
+    /*/*/
     describe('roam', roam)
     describe('effect', effect)
     describe('header', header)

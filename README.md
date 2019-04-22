@@ -26,17 +26,14 @@
 
 ```javascript
 export default () => {
-    /*[BEFORE*/
+    /*BEFORE*/
     before()
-    /*]*/
-    /*[AFTER*/
+    /*AFTER*/
     after()
-    /*]*/
-    /*[S2DS1*/
+    /*CASE*/
     it('广告位 有数据', async () => {})
-    /*]*/
-    /*[HDSSK*/
+    /*CASE*/
     it('广告位 没数据', async () => {})
-    /*]*/
+    /*/*/
 }
 ```
