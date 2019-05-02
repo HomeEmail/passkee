@@ -5,7 +5,7 @@
       <ul flex
           class="left">
         <li :class="[active === 'domkit' ? 'active' : '']"
-            @click="active = 'domkit'">DomKit</li>
+            @click="active = 'domkit'">TestKit</li>
         <li :class="[active === 'network' ? 'active' : '']"
             @click="active = 'network'">Network</li>
       </ul>
@@ -13,53 +13,51 @@
     </header>
     <section v-if="active === 'domkit'">
       <ul>
-        <li v-for="(item, i) in ['click', 'input', 'focus', 'blur','hover', 'mouseenter', 'mouseleave']"
-            :key="i">
-          <el-button size="mini"
-                     @dblclick="clck({type: 'trigger', event: item})"
-                     @click="clck({type: 'trigger', event: item})"
-                     round>{{item}}</el-button>
+        <li class="btn"
+            v-for="(item, i) in ['click', 'input', 'focus', 'blur','hover', 'mouseenter', 'mouseleave']"
+            :key="i"
+            @click="clck({type: 'trigger', options:{event: item}})">
+          {{item}}
         </li>
       </ul>
       <div class="dom-func line">
-        <el-button-group>
-          <el-button size="mini"
-                     v-for="(item, i) in ['waitFor', 'expect', 'get']"
-                     :key="i"
-                     @click="domModeChange(item)"
-                     :type="item === domMode ? 'warning' : 'info'"
-                     round>{{item}}</el-button>
-        </el-button-group>
+        <span class="group">
+          <span :class="['btn', item === domMode ? 'active' : '']"
+                v-for="(item, i) in ['waitFor', 'expect', 'get']"
+                :key="i"
+                @click="domModeChange(item)">{{item}}</span>
+        </span>
       </div>
       <ul>
-        <li v-for="(item, i) in func[domMode]"
+        <li class="btn"
+            v-for="(item, i) in func[domMode]"
+            @click="clck({type: 'dom', options:{mode: domMode, func: item}})"
             :key="i">
-          <el-button size="mini"
-                     @dblclick="clck({type: 'dom', mode: domMode, func: item})"
-                     @click="clck({type: 'dom', mode: domMode, func: item})"
-                     round>{{item}}</el-button>
+          {{item}}
         </li>
       </ul>
 
       <ul class=" line">
-        <li v-for="(item, i) in ['response', 'request', 'waitFor']"
+        <li class="btn"
+            v-for="(item, i) in ['response', 'request', 'waitFor']"
+            @click="toInsertLine({type: 'page', options:{func: item}})"
             :key="i">
-          <el-button size="mini"
-                     @click="toInsertLine({type: 'page', func: item})"
-                     round>{{item}}</el-button>
+          {{item}}
         </li>
       </ul>
     </section>
+    <Network v-if="active === 'network'" />
   </section>
 </template>
 
 <script>
 import codeGenerator from '../../lib/codeGenerator'
-
+import Network from './Network.vue'
 let dbclickTimer = 0
 let clickTimo = 0
 
 export default {
+    components: { Network },
     data() {
         const oneParam = [
             'text',
@@ -112,14 +110,14 @@ export default {
         domModeChange(mode) {
             this.domMode = mode
 
-            codeGenerator.changeFocusedLine({
+            codeGenerator.replaceFocusedLine({
                 type: 'dom',
-                mode: mode
+                options: { mode: mode }
             })
         },
 
         toChangeLine(opts) {
-            codeGenerator.changeFocusedLine(opts)
+            codeGenerator.replaceFocusedLine(opts)
         },
         toInsertLine(opts) {
             codeGenerator.insertLine(opts)
@@ -134,6 +132,7 @@ export default {
   height 100%
   overflow auto
   background-color rgba(0, 0, 0, 0.5)
+  user-select none
   header
     background-color #666
     height 24px
@@ -160,15 +159,45 @@ export default {
         border-left 1px solid #666
   .dom-func
     padding-bottom 0
-  &>section>ul, .dom-func
-    padding 5px
-    margin 0
-    li
-      display inline-block
+  &>section
+    max-height calc(100% - 30px)
+    overflow auto
+    &>ul, .dom-func
       padding 5px
       margin 0
-    button
-      padding 4px 10px !important
+      li
+        display inline-block
+        margin 5px
+        line-height 1
+      .group
+        display inline-block
+        border-radius 3px
+        overflow hidden
+        &>.btn
+          border-radius 0
+          border-right 1px solid #ccc
+          background-color rgba(255, 255, 255, 0.9)
+          &:last-child
+            border-right none
+      .btn
+        display inline-block
+        padding 2px 6px
+        background-color #ffffff
+        color #333
+        font-size 13px
+        font-weight bold
+        border-radius 3px
+        font-weight 400
+        cursor pointer
+        transition all 0.2s
+        &:hover
+          background-color rgba(255, 255, 255, 0.8)
+          color #000
+        &:active
+          background-color rgba(255, 255, 255, 0.3)
+        &.active
+          background-color rgba(255, 255, 255, 0.6)
+          font-weight bold
   .line
     border-top 1px solid rgba(255, 255, 255, 0.3)
 </style>

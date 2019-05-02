@@ -4776,9 +4776,19 @@ punycode@^2.1.0:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/punycode/download/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
 
-puppeteer-domkit@^1.1.20, puppeteer-domkit@^1.1.27:
+puppeteer-domkit@^1.1.20:
   version "1.1.27"
   resolved "http://registry.npm.taobao.org/puppeteer-domkit/download/puppeteer-domkit-1.1.27.tgz#1cc8719d97f519c0cdf0949838a9152c845d5b75"
+  dependencies:
+    colors "^1.3.3"
+    puppeteer "^1.14.0"
+    puppeteer-domkit "^1.1.20"
+    tslib "^1.9.3"
+    typescript "^3.0.0"
+
+puppeteer-domkit@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npm.taobao.org/puppeteer-domkit/download/puppeteer-domkit-1.2.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpuppeteer-domkit%2Fdownload%2Fpuppeteer-domkit-1.2.0.tgz#2600a0b14d3d58fb719b44304ecefd437df62afd"
   dependencies:
     colors "^1.3.3"
     puppeteer "^1.14.0"

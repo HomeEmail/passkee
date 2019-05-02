@@ -10,10 +10,12 @@
 </template>
 
 <script>
-import listenDocumentEvent from './listenDocumentEvent'
+import listenDocEvent from './util/listenDocEvent'
 import PdrCategory from './components/Category.vue'
 import PdrCode from './components/Code.vue'
 import PdrHelper from './components/Helper.vue'
+import codeGenerator from '../lib/codeGenerator'
+
 export default {
     name: 'puppeteer-domkit-recorder',
     components: { PdrCategory, PdrCode, PdrHelper },
@@ -28,7 +30,17 @@ export default {
         console.log(`[pdr-command]ready=1`)
     },
     mounted() {
-        listenDocumentEvent.on()
+        listenDocEvent.on()
+        // 默认
+        codeGenerator.appendLine({
+            type: 'request',
+            options: {
+                from: 'window',
+                hash: window.location.hash,
+                url: window.location.href,
+                event: 'popstate'
+            }
+        })
     },
     computed: {
         category() {
@@ -52,7 +64,7 @@ export default {
   left 0
   right 0
   width 100%
-  z-index 9000
+  z-index 900000
   &>*
     height 100%
   *

@@ -1,12 +1,16 @@
 <template>
 
   <section class="pdr-code">
-    <header flex>
+    <header flex="main:justify">
       <ul flex
           class="left">
-        <li>save</li>
+        <li title="copy"
+            @click="copy"><i class="iconfont icon-copy"></i></li>
       </ul>
-      <ul class="right"></ul>
+      <ul class="right">
+        <li title="double click to clear"
+            @click="dbclickClear"><i class="iconfont icon-clear"></i></li>
+      </ul>
     </header>
     <codemirror ref="myCm"
                 :value="code"
@@ -24,7 +28,7 @@ import formating from '../../lib/codeMirror/formating'
 formating(CodeMirror)
 import finder from '@medv/finder'
 import codeGenerator from '../../lib/codeGenerator'
-
+let dbclickTimer = 0
 export default {
     name: 'puppeteer-domkit-recorder',
     data() {
@@ -45,7 +49,6 @@ export default {
     },
 
     mounted() {
-        console.log(this.codemirror.getCursor().line)
         codeGenerator.bind(this.codemirror)
     },
     computed: {
@@ -53,7 +56,40 @@ export default {
             return this.$refs.myCm.codemirror
         }
     },
-    methods: {}
+    methods: {
+        copy(e) {
+            codeGenerator.selectAll()
+            const fn = (event) => {
+                console.log(event)
+                event.clipboardData.setData(
+                    'text/plain',
+                    this.codemirror.getValue()
+                )
+                document.removeEventListener('copy', fn, true)
+                event.preventDefault()
+            }
+            document.addEventListener('copy', fn, true)
+            document.execCommand('copy')
+            setTimeout(() => {
+                this.codemirror.focus()
+            }, 10)
+        },
+        dbclickClear() {
+            codeGenerator.clear()
+            TNK.dispatch('network-list-change', 'networkList', (list) => {
+                return []
+            })
+            setTimeout(() => {
+                this.codemirror.focus()
+            }, 10)
+            // if (dbclickTimer && Date.now() - dbclickTimer < 300) {
+            //     codeGenerator.clear()
+            //     dbclickTimer = 0
+            //     return
+            // }
+            // dbclickTimer = Date.now()
+        }
+    }
 }
 </script>
 
@@ -63,21 +99,26 @@ export default {
   header
     background-color #666
     height 24px
+    user-select none
     ul
       li
         height 24px
         line-height 24px
         color #fff
         font-size 12px
-        padding 0 10px
-        background-color rgba(255, 255, 255, 0.2)
+        padding 0 7px
         cursor pointer
+        position relative
         &:hover
+          background-color rgba(255, 255, 255, 0.2)
+        &:active
           background-color rgba(255, 255, 255, 0.4)
     ul.left
+      padding-left 5px
       li
         border-right 1px solid #666
     ul.right
+      padding-right 5px
       li
         border-left 1px solid #666
   .vue-codemirror
@@ -91,4 +132,6 @@ export default {
     height 100%
     overflow-y hidden
     overflow-x auto
+  .CodeMirror-line
+    padding-left 10px
 </style>

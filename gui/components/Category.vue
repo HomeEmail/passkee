@@ -1,6 +1,6 @@
 <template>
   <section class="pdr-category">
-    <el-input placeholder="filter"
+    <!-- <el-input placeholder="filter"
               size="small"
               v-model="filterText">
     </el-input>
@@ -11,6 +11,13 @@
                :props="defaultProps"
                :filter-node-method="filterNode"
                @current-change="handleNodeClick"></el-tree>
+    </div>-->
+    <div class="tips">
+      <h2>Passkee</h2>
+      Support for cases management is in development
+      <br><br><br><br>
+      <p>Powered by stevenJC</p>
+      <p>v0.3.2</p>
     </div>
   </section>
 </template>
@@ -57,6 +64,15 @@ export default {
   height 100%
   background-color rgba(0, 0, 0, 0.8)
   overflow hidden
+  .tips
+    color rgba(255, 255, 255, 0.3)
+    padding 40px 20px
+    line-height 2
+    font-size 13px
+    h2
+      font-size 24px
+    p
+      text-align right
   .tree-wrapper
     height calc(100% - 30px)
     overflow-y auto
