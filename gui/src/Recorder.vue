@@ -26,7 +26,7 @@ export default {
     watch: {},
     created() {},
     beforeMount() {
-        console.log(`[pdr-command]ready=1`)
+        //console.log(`[pdr-command]ready=1`)
     },
     mounted() {},
     computed: {

@@ -1,10 +1,30 @@
-#passkee-ifr {
-	height: 300px;
-	width: 100%;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 900000;
-	border: none;
-}
+#passkee-ifr
+	height 300px
+	width 100%
+	position fixed
+	bottom 0
+	left 0
+	right 0
+	z-index 900000
+	border none
+	transition all 0.2s
+	&.hide
+		bottom -300px
+#passkee-ifr-controller
+	user-select none
+	display inline-block
+	width 40px
+	height 40px
+	border-radius 20px
+	background-color rgba(0, 0, 0, 0.8)
+	position fixed
+	left calc(100% - 100px)
+	top 50%
+	z-index 1000000
+	cursor pointer
+	box-shadow 0 0 0px 3px rgba(255, 255, 255, 0.3) inset, 0 0 10px 5px rgba(0, 0, 0, 0.8)
+	color rgba(255, 255, 255, 0.8)
+	line-height 40px
+	font-size 12px
+	text-align center
+	text-shadow 0 0 3px rgba(255, 255, 255, 0.3)

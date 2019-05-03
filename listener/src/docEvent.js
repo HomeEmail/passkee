@@ -23,6 +23,9 @@ export default {
 			document.addEventListener(
 				item,
 				function(e) {
+					if (e.target.id === 'passkee-ifr-controller') {
+						return;
+					}
 					if (!$Z(e.target).parents().filter('#puppeteer-domkit-recorder').length) {
 						connection.send(
 							'code-generate',

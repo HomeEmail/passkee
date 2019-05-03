@@ -20,4 +20,4 @@ console.log(instance);
 instance.connection = connection;
 window.PASSKEE_GUI = instance;
 
-connection.send('resize', { width: window.outerWidth, height: window.outerHeight });
+connection.send('resize', { width: window.outerWidth, height: window.outerHeight - 22 });
