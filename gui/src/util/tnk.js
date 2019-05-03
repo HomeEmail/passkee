@@ -4,6 +4,13 @@ window.TNK = new Tnk({
 	postData: {},
 	getData: {},
 	networkList: [
+		{
+			url: window.parent.location.href,
+			resourceType: 'document',
+			pathname: window.parent.location.pathname,
+			lastPath: window.parent.location.pathname.split('/').pop(),
+			method: 'GET'
+		}
 		// {
 		// 	url: 'https://tumaxapi.to8to.com/merchant/login/accountlogin',
 		// 	resourceType: 'xhr',

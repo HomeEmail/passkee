@@ -76,7 +76,17 @@ export default {
         dbclickClear() {
             codeGenerator.clear()
             TNK.dispatch('network-list-change', 'networkList', (list) => {
-                return []
+                return [
+                    {
+                        url: window.parent.location.href,
+                        resourceType: 'document',
+                        pathname: window.parent.location.pathname,
+                        lastPath: window.parent.location.pathname
+                            .split('/')
+                            .pop(),
+                        method: 'GET'
+                    }
+                ]
             })
             setTimeout(() => {
                 this.codemirror.focus()

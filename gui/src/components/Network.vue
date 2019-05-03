@@ -8,7 +8,8 @@
              flex="box:first">
           <div class="icon"
                :style="{'background-color': '#' + (colors[item.resourceType] || '555')}">{{trans[item.resourceType] || '??'}}</div>
-          <div class="url">
+          <div class="url"
+               :title="item.url">
             <h4><span>{{item.method}}</span> - /{{item.lastPath}}</h4>
             <p>{{item.url}}</p>
           </div>

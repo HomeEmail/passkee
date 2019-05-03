@@ -6,7 +6,7 @@ import './src/assets/font/iconfont';
 import './src/assets/font/iconfont.css';
 import 'flex.css';
 import './src/base.styl';
-import './src/util/tnkGui';
+import './src/util/tnk';
 
 import connection from './src/connection';
 

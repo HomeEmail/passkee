@@ -8,6 +8,11 @@ module.exports = (args) => {
 			networkList.push(args.options);
 			return networkList;
 		});
+
+		if (args.options.resourceType !== 'xhr') {
+			return;
+		}
 	}
+
 	codeGenerator.commandExec(args);
 };
