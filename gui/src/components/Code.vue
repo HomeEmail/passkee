@@ -24,10 +24,9 @@ import * as CodeMirror from 'codemirror/lib/codemirror'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
 import 'codemirror/mode/javascript/javascript'
-import formating from '../../lib/codeMirror/formating'
+import formating from '../util/codeMirror/formating'
 formating(CodeMirror)
-import finder from '@medv/finder'
-import codeGenerator from '../../lib/codeGenerator'
+import codeGenerator from '../util/codeGenerator'
 let dbclickTimer = 0
 export default {
     name: 'puppeteer-domkit-recorder',

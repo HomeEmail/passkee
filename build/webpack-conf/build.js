@@ -5,7 +5,11 @@ const baseWebpackConfig = require('./base');
 const path = require('path');
 
 module.exports = () => {
-	const entry = { index: path.join(__dirname, '../../gui/index.js') };
+	const entry = {
+		'passkee-gui': path.join(__dirname, '../../gui/index.js'),
+		'passkee-listener': path.join(__dirname, '../../listener/index.js')
+		//'passkee-serve': path.join(__dirname, '../../serve/index.js')
+	};
 
 	return merge(baseWebpackConfig, {
 		mode: 'production',
@@ -20,8 +24,8 @@ module.exports = () => {
 		output: {
 			path: path.join(__dirname, '../../browser'),
 			publicPath: '',
-			filename: `pdr-gui.js`,
-			library: 'puppeteer-domkit-recorder',
+			filename: `[name].js`,
+			library: '[name]',
 			libraryTarget: 'umd',
 			umdNamedDefine: true
 		},

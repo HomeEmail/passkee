@@ -1,12 +1,14 @@
 import Vue from 'vue';
-import Recorder from './Recorder.vue';
+import Recorder from './src/Recorder.vue';
 import VueCodemirror from 'vue-codemirror';
 import 'puppeteer-domkit/browser/$Z';
-import './assets/font/iconfont';
-import './assets/font/iconfont.css';
+import './src/assets/font/iconfont';
+import './src/assets/font/iconfont.css';
 import 'flex.css';
-import './assets/base.styl';
-import './util/tnkGui';
+import './src/base.styl';
+import './src/util/tnkGui';
+
+import connection from './src/connection';
 
 Vue.use(VueCodemirror);
 const RecorderComponent = Vue.extend(Recorder);
@@ -15,6 +17,7 @@ instance.vm = instance.$mount();
 document.querySelector('html').appendChild(instance.$el);
 
 console.log(instance);
-window.PDRGUI = instance;
+instance.connection = connection;
+window.PASSKEE_GUI = instance;
 
-console.log(`[pdr-command]resize=${window.outerWidth},${window.outerHeight - 20}`);
+connection.send('resize', { width: window.outerWidth, height: window.outerHeight });

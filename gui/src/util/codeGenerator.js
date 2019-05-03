@@ -29,8 +29,19 @@ module.exports = new class {
 				isEmpty: !lineCode.length,
 				isAtTheEnd: cursor.ch === lineCode.length
 			};
-			console.log('cursorActivity', this.currentLine);
 		});
+	}
+
+	commandExec(opts) {
+		console.log('commandExec(opts)', opts);
+		const func = {
+			append: this.appendLine,
+			insert: this.insertLine,
+			replace: this.replaceFocusedLine
+		}[opts.action];
+		if (func) {
+			func.call(this, opts);
+		}
 	}
 
 	insertLine(lineOpts) {

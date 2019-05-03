@@ -1,8 +1,9 @@
 const $ = require('puppeteer-domkit');
 const url = require('url');
+const connection = require('./connection');
 let inited = false;
 module.exports = {
-	on() {
+	listen() {
 		if (inited) return;
 		inited = true;
 		[ 'targetdestroyed', 'targetcreated' ].forEach((item) => {
@@ -12,9 +13,12 @@ module.exports = {
 					url: target.url(),
 					targetType: target.type()
 				};
-				$.page.evaluate((req) => {
-					if (typeof TNK !== 'undefined') TNK.pub('pptr-target', req);
-				}, details);
+
+				connection.sendToGui('code-generate', {
+					type: 'target',
+					action: 'append',
+					options: details
+				});
 			});
 		});
 
@@ -32,9 +36,12 @@ module.exports = {
 				const lastPath = u.pathname.split(/[\\\/]/g).pop();
 				Object.assign(details, u, { lastPath });
 				console.log(details);
-				$.page.evaluate((req) => {
-					if (typeof TNK !== 'undefined') TNK.pub('pptr-request', req);
-				}, details);
+
+				connection.sendToGui('code-generate', {
+					type: 'request',
+					action: 'append',
+					options: details
+				});
 			}
 		});
 	}

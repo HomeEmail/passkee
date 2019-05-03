@@ -2,7 +2,7 @@
 const $ = require('puppeteer-domkit');
 require('colors');
 const puppeteer = require('puppeteer');
-const pdr = require('../index');
+const pdr = require('../serve/index');
 
 describe('puppeteer-domkit', () => {
 	before(async () => {

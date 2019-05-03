@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import codeGenerator from '../../lib/codeGenerator'
+import codeGenerator from '../util/codeGenerator'
 import Network from './Network.vue'
 let dbclickTimer = 0
 let clickTimo = 0

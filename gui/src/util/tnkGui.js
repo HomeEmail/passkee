@@ -1,4 +1,4 @@
-import Tnk from '../../lib/Tnk';
+import Tnk from '../../../lib/Tnk';
 
 window.TNK = new Tnk({
 	postData: {},

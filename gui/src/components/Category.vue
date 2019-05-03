@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import codeGenerator from '../../lib/codeGenerator'
+import codeGenerator from '../util/codeGenerator'
 
 export default {
     data() {
