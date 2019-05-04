@@ -1,8 +1,4 @@
-module.exports = ({ options: { func }, action }) => {
+module.exports = ({ options: { func }, action, currentLine }) => {
 	const code = [ `${func}` ];
-
-	if ([ 'insert', 'append' ].includes(action)) {
-		code.unshift('\n');
-	}
 	return code.join('');
 };

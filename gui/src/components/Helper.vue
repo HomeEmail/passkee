@@ -30,7 +30,7 @@
       </div>
       <ul>
         <li class="btn"
-            v-for="(item, i) in func[domMode]"
+            v-for="(item, i) in dom"
             @click="clck({type: 'dom', options:{mode: domMode, func: item}})"
             :key="i">
           {{item}}
@@ -39,7 +39,7 @@
 
       <ul class=" line">
         <li class="btn"
-            v-for="(item, i) in ['response', 'request', 'waitFor']"
+            v-for="(item, i) in bom"
             @click="toInsertLine({type: 'page', options:{func: item}})"
             :key="i">
           {{item}}
@@ -53,36 +53,18 @@
 <script>
 import codeGenerator from '../util/codeGenerator'
 import Network from './Network.vue'
+import constant from '../../../common/constant'
 let dbclickTimer = 0
 let clickTimo = 0
 
 export default {
     components: { Network },
     data() {
-        const oneParam = [
-            'text',
-            'html',
-            'height',
-            'width',
-            'offset',
-            'offsetParent',
-            'position',
-            'val',
-            'index',
-            'scrollTop'
-        ]
-
-        const twoParams = ['css', 'attr', 'prop', 'data', 'is', 'hasClass']
-
         return {
             active: 'domkit',
             domMode: 'waitFor',
-            actions: ['trigger', 'waitFor', 'expect'],
-            func: {
-                get: [...oneParam, ...twoParams],
-                waitFor: [...oneParam, ...twoParams],
-                expect: [...oneParam, ...twoParams]
-            }
+            dom: [...constant.dom],
+            bom: [...constant.bom]
         }
     },
 
@@ -109,7 +91,6 @@ export default {
 
         domModeChange(mode) {
             this.domMode = mode
-
             codeGenerator.replaceFocusedLine({
                 type: 'dom',
                 options: { mode: mode }

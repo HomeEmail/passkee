@@ -1,8 +1,13 @@
-import Tnk from '../../../lib/Tnk';
+import Tnk from '../../../common/Tnk';
 
 window.TNK = new Tnk({
 	postData: {},
 	getData: {},
+	currentLine: {
+		line: 0,
+		ch: 0,
+		code: ''
+	},
 	networkList: [
 		{
 			url: window.parent.location.href,

@@ -8,8 +8,7 @@
             @click="copy"><i class="iconfont icon-copy"></i></li>
       </ul>
       <ul class="right">
-        <li title="double click to clear"
-            @click="dbclickClear"><i class="iconfont icon-clear"></i></li>
+        <li @click="clear"><i class="iconfont icon-clear"></i></li>
       </ul>
     </header>
     <codemirror ref="myCm"
@@ -41,7 +40,7 @@ export default {
                 line: true,
                 autofocus: true,
                 extraKeys: {
-                    'Ctrl-X': 'deleteLine'
+                    'Ctrl-A': 'selectAll'
                 }
             }
         }
@@ -73,7 +72,7 @@ export default {
                 this.codemirror.focus()
             }, 10)
         },
-        dbclickClear() {
+        clear() {
             codeGenerator.clear()
             TNK.dispatch('network-list-change', 'networkList', (list) => {
                 return [

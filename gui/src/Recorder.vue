@@ -28,7 +28,13 @@ export default {
     beforeMount() {
         //console.log(`[pdr-command]ready=1`)
     },
-    mounted() {},
+    mounted() {
+        document.addEventListener('click', (e) => {
+            setTimeout(() => {
+                codeGenerator.focus()
+            }, 100)
+        })
+    },
     computed: {
         category() {
             return this.$refs.category

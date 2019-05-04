@@ -1,7 +1,13 @@
-module.exports = ({ options: { selector, event, from, tagName, value, type, name }, action }) => {
+module.exports = ({ options: { selector = '', event, from, tagName, value, type, name }, action, currentLine }) => {
 	const code = [];
 	const textInput = [ 'text', 'email', 'url', 'number', 'search', 'password' ];
 	const clickInput = [ 'radio', 'checkbox' ];
+
+	if (action === 'replace') {
+		selector = /\$\([\'\"].*?[\'\"]\)\./.exec(currentLine.code)[0];
+		selector = (selector || '').replace(/\$\([\'\"]/, '').replace(/[\'\"]\)\./, '');
+	}
+
 	if (event === 'change') {
 		if (tagName === 'TEXTAREA' || (tagName === 'INPUT' && textInput.includes(type))) {
 			code.push(`await $('${selector}').input('${value}')`);
@@ -16,10 +22,6 @@ module.exports = ({ options: { selector, event, from, tagName, value, type, name
 		}
 	} else {
 		code.push(`await $('${selector}').${event}()`);
-	}
-
-	if (code.length && [ 'insert', 'append' ].includes(action)) {
-		code.unshift('\n');
 	}
 
 	return code.join('');

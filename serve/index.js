@@ -2,7 +2,7 @@ require('colors');
 const path = require('path');
 const puppeteer = require('puppeteer');
 const $ = require('puppeteer-domkit');
-const utils = require('../lib/utils');
+const utils = require('../common/utils');
 const globalEvent = require('./src/globalEvent');
 const connection = require('./src/connection');
 module.exports = async () => {
